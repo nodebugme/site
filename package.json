@@ -1,0 +1,33 @@
+{
+  "name": "nodebug.me",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "a-big-triangle": "^1.0.0",
+    "bell": "^1.1.0",
+    "blankie": "^0.1.2",
+    "concat-stream": "^1.4.6",
+    "crumb": "^3.3.0",
+    "debug": "^2.1.0",
+    "github": "^0.2.2",
+    "gl-now": "^1.4.0",
+    "gl-texture2d": "^2.0.8",
+    "glslify": "^1.6.0",
+    "good": "^3.0.1",
+    "handlebars": "^2.0.0",
+    "hapi": "^7.0.0",
+    "hapi-auth-cookie": "^1.3.2",
+    "joi": "^4.7.0",
+    "marked": "^0.3.2",
+    "oauth": "^0.9.12",
+    "pg.js": "^3.5.0",
+    "yar": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Dickinson <chris@neversaw.us> (http://neversaw.us/)",
+  "license": "MIT"
+}
