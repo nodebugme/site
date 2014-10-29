@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{#if title }}{{ title }} | {{/if}}Node bug me</title>
+  <link rel="stylesheet" href="{{staticMediaURL}}style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h4>Nodebug.me</h4>
+  {{#if user}}
+  {{else}}
+    <a class="btn btn-block btn-social btn-github" href="/login">
+      <i class="fa fa-github">&nbsp;</i> Sign in with GitHub
+    </a>
+  {{/if}}
+  </div>
+</header>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{#if current}}{{ current.issue.title }} | {{/if}}Node bug me</title>
+<link rel="stylesheet" href="{{staticMediaURL}}style.css" />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+</head>
+<body>
+{{#if current}}
+  <h1>YOU GOTTA BUG {{current.issue.number}}</h1>
+  <form method="POST" action="/triage">
+    <input type="hidden" name="crumb" value="{{crumb}}"/>
+    <a href="/triage/{{ current.issue.repo.user }}/{{ current.issue.repo.name }}/{{ current.issue.number }}">GIMME BUG</a>
+    <button name="skip" value="skip">SKIP</button>
+  </form>
+{{else}}
+  <h1>TRIAGE HOME</h1>
+  <form method="POST" action="/triage">
+    <input type="hidden" name="crumb" value="{{crumb}}"/>
+    <button>GIMME BUG</button>
+    <button name="skip" value="skip">SKIP</button>
+  </form>
+{{/if}}
+<script type="text/javascript" src="{{staticMediaURL}}bundle.js" data-main="issue-detail"></script>
+</body>
+</html>

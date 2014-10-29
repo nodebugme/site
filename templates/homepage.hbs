@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Node bug me</title>
+  <link rel="stylesheet" href="{{staticMediaURL}}style.css" />
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro" rel="stylesheet" type="text/css" />
+  <link href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div id="masthead">
+  <div class="wrap">
+    <h1>
+      <span class="node-text">Node</span><span class="node-dot-text ion-cloud"></span><span class="node-js-text">JS</span> has a <strong class="bug">bug</strong> problem.
+    </h1>
+    {{#if openBugs}}
+    <h2>
+      There are {{openBugs}} untriaged issues on the Node.JS issue tracker.
+    </h2>
+    {{/if}}
+    <p>
+      You can help. <a href="#help">Learn more</a> or
+      <a class="login-btn" href="/login">
+        <i class="ion-social-github"></i> Sign in with GitHub
+      </a>
+      to clean Node up.
+    </p>
+  </div>
+</div>
+
+<div id="help">
+  <div class="wrap">
+    <h2>Node.JS is <em>great</em> at a lot of things.</h2>
+    <ul>
+      <li>Building tiny, fast HTTP servers!</li>
+      <li>Having a great community!</li>
+      <li>Programming robots!</li>
+      <li>Making package managers!</li>
+      <li>Packaging Make replacements!</li>
+      <li>Making open data accessible!</li>
+      <li>Artisanal, shade grown flow control libraries!</li>
+      <li>Keeping the dream of even/odd releases alive!</li>
+    </ul>
+  </div>
+</div>
+
+<div id="however">
+  <div class="wrap">
+    <h2>But Node.JS is <em class="bug">bad</em> at triaging bugs.</h2>
+    <ul>
+      <li>&amp; there are a <strong>lot</strong> of bugs!</li>
+      <li>It takes more time to properly<br /> diagnose them than to create them!</li>
+      <li>There&#39;s a <strong>lot</strong> more Node.JS users<br /> than Node.JS core devs!</li>
+    </ul>
+  </div>
+</div>
+
+<div id="you">
+  <div class="wrap">
+    <div class="vertical-center">
+      <h2>That's where <em>you</em> come in.</h2>
+      <h3><small>(with your squishy, human brain)</small></h3>
+    </div>
+  </div>
+</div>
+
+<div id="how">
+  <div class="wrap">
+    <h2>Nodebugme will randomly give you an open Node issue to triage.</h2>
+    <p>
+      Don't worry about <em>fixing</em> it or <em>commenting</em> on it! All we need
+      is for you to look at the issue, and then answer some questions about it.
+    </p>
+  </div>
+</div>
+
+<!-- illustrations of humans looking at bugs -->
+<div id="questions">
+  <div class="wrap">
+    <h2>We&#39;ll ask you the following questions:</h2>
+
+    <ul class="question-list">
+      <li>Is the bug a duplicate of another bug? If so, what bugs?</li>
+      <li>Is there a clear consensus on how to handle the bug?</li>
+      <li>Has a core contributor blessed an approach to fixing the bug/feature?</li>
+      <li>Are there enough steps to reproduce the issue?</li>
+      <li>Is the bug still reproducible as of the latest stable release of Node?</li>
+    </ul>
+
+    <p>At <strong>any</strong> point, you can always say &ldquo;I don&#39;t know&rdquo;
+    and we&#39;ll skip the question. And if you&#39;re really stumped by a bug, don&#39;t fret! You can always ask for a new issue to triage. We won&#39;t bother you with that issue again.
+    </p>
+  </div>
+</div>
+
+  <!-- illustration of a human quixotically regarding a flexing macho bug -->
+
+  <!-- illustration of a machine eating all of the responses, rollover to
+  picture of weeping human cranking organ grinder -->
+<div id="ok">
+  <div class="wrap">
+    <h2>Your responses will help clean up the bug tracker!</h2>
+    <p>
+      Your responses will be provided to a state of the art, synergistic, 10X
+      triage-application machine. The machine will assemble multiple triage
+      evaluation reports into a single evaluation, and take decisive, unerring
+      action on the bug.
+    </p>
+
+    <p>
+      In the process, <strong>you</strong> will have helped
+      clean up the Node issue tracker, and ensure the project's continued health!
+    </p>
+  </div>
+</div>
+
+<footer>
+  <p>This site is <a href="#">available on github</a>. All code is MIT licensed.
+  All art is licensed <a href="https://creativecommons.org/licenses/by/3.0/us/legalcode">CC-BY 3.0</a>.
+</footer>
+<script type="text/javascript" src="{{staticMediaURL}}bundle.js" data-main="issue-detail"></script>
+</body>
+</html>

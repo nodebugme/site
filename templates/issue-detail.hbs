@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{ userIssue.issue.title }} | Node bug me</title>
+<link rel="stylesheet" href="{{staticMediaURL}}style.css" />
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+
+</head>
+<body class="{{userIssue.state}} {{errorClass}}">
+  <h1>
+    <small><a target="_blank" href="https://github.com/{{ userIssue.issue.repo.user }}/{{ userIssue.issue.repo.name }}/issues/{{ userIssue.issue.number }}">{{ userIssue.issue.repo.user }}/{{ userIssue.issue.repo.name }}#{{ userIssue.issue.number }}</a></small>
+    - {{ userIssue.issue.title }}
+  </h1>
+
+  <h2>
+    {{userIssue.questionText}}
+  </h2>
+
+  <form method="POST" action="/triage/{{ userIssue.issue.repo.user }}/{{ userIssue.issue.repo.name }}/{{ userIssue.issue.number }}">
+    <input type="hidden" name="crumb" value="{{crumb}}"/>
+
+    {{{userIssue.questionForm}}}
+
+    <button>Submit</button>
+  </form>
+  <form method="POST" action="/triage">
+    <input type="hidden" name="crumb" value="{{crumb}}"/>
+    <button name="skip" value="skip">I&#39;d like a different issue.</button>
+  </form>
+  <script type="text/javascript" src="{{staticMediaURL}}bundle.js" data-main="issue-detail"></script>
+</body>
+</html>

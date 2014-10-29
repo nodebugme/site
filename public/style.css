@@ -1,0 +1,219 @@
+body {margin: 0; padding: 0; overflow: auto; font-family: Source Sans Pro; color: #333;}
+
+
+h1 {font-size: 3em; margin: 0px 0;}
+h2 {font-size: 2em;}
+h2 a { color: black; }
+
+h1, h2, h3 {
+  font-family: Source Sans Pro, Courier New, Courier, Monaco, monospace;
+}
+
+code {font-family: Source Code Pro; font-size: 12px; background: #fafafa; border-radius: 3px; padding: 3px 5px; line-height: 20px;}
+
+@-webkit-keyframes bgscroll { from { background-position: 0px 0px, 0px 0px; } to { background-position: 533px 315px, 2112px -231.5px; } }
+@-moz-keyframes bgscroll { from { background-position: 0px 0px, 0px 0px; } to { background-position: 533px 315px, 2112px -231.5px; } }
+@-ms-keyframes bgscroll { from { background-position: 0px 0px, 0px 0px; } to { background-position: 533px 315px, 2112px -231.5px; } }
+@-o-keyframes bgscroll { from { background-position: 0px 0px, 0px 0px; } to { background-position: 533px 315px, 2112px -231.5px; } }
+@keyframes bgscroll { from { background-position: 0px 0px, 0px 0px; } to { background-position: 533px 315px, 2112px -231.5px; } }
+
+#node-turtle {
+  width: 527px;
+  height: 360px;
+  background: url('./images/node-turtle.png');
+  background-size: 527px 360px;
+}
+
+body {}
+
+.login-btn:visited,
+.login-btn {
+  color: #22252a;
+  background-color: #b9c949;
+  font-size:1.25em;
+  text-decoration:none;
+  border: 1px solid #22252a;
+  border-radius: 4px;
+  padding: 0.25em 0.5em;
+  margin: 0 0.25em;
+}
+
+.login-btn:active,
+.login-btn:hover {
+  color: #b9c949;
+  background-color: #22252a;
+  border-color: #b9c949;
+  font-size:1.25em;
+  text-decoration:none;
+}
+
+.wrap {
+  width: 960px;
+  margin: 0pt auto;
+}
+
+#masthead {
+  background: #22252a;
+  margin: 0;
+  color: #eee;
+  padding-top: 4em;
+  font-family: Courier New, Courier, Monaco, monospace;
+}
+
+#masthead h2 {
+  margin: 0;
+}
+
+#masthead p {
+  font-family: Source Sans Pro, sans-serif;
+}
+
+a:visited {
+  color: #737e26;
+}
+
+a {
+  color: #b9c949;
+}
+
+a:hover,
+a:active,
+a:visited {
+  color: #c3d44e;
+}
+
+#help {
+  
+}
+
+.bug {
+  color: #b9c949;
+}
+
+.node-dot-text,
+.node-js-text,
+.node-text {
+  font-family: Courier New, Courier, Monaco, monospace;
+  font-size: 2.0em;
+}
+
+.node-text {
+  color: #e3e3e3;
+  letter-spacing: -0.05em;
+}
+
+.node-dot-text {
+  color: #ccc;
+  position: relative;
+  width: 0px;
+  font-size: 0.7em;
+  margin: 0px -10px;
+  text-shadow: 2px 0px 0px #22252a,
+               2px 2px 0px #22252a,
+               -2px -2px 0px #22252a,
+               -2px 0px 0px #22252a,
+               -2px 2px 0px #22252a,
+               2px -2px 0px #22252a,
+               0px 2px 0px #22252a,
+               0px -2px 0px #22252a;
+}
+
+.node-js-text {
+  color: #b9c949;
+  text-stroke: 4px #737e26;
+  -webkit-text-stroke: 4px #737e26;
+  letter-spacing: -0.05em;
+  text-shadow: 2px 0px 0px #737e26,
+               2px 2px 0px #737e26,
+               -2px -2px 0px #737e26,
+               -2px 0px 0px #737e26,
+               -2px 2px 0px #737e26,
+               2px -2px 0px #737e26,
+               0px 2px 0px #737e26,
+               0px -2px 0px #737e26;
+}
+
+.node-js-text:after {
+  display: inline-block;
+  content: ' ';
+  width: 0.1em;
+  height:1px;
+}
+
+#help {
+  background: url('./images/node-turtle.png') no-repeat scroll 80% 4em;
+  background-size: 527px 360px;
+  min-height: 380px;
+  padding-top: 1.0em;
+  color: #22252a;
+}
+
+ul {
+  font-size: 1.25em;
+  padding: 0;
+}
+
+ul > li {
+  list-style: none;
+  margin-bottom: 0.5em;
+}
+
+#help p {
+  font-size: 1.5em;
+}
+
+#however {
+  background: url('./images/node-bugs.png') no-repeat scroll 0% 0%;
+  background-color: #22252b;
+  background-size: 819px 360px;
+  color: #eee;
+  text-align: right;
+  min-height: 360px;
+}
+
+#however h2 {
+  padding-top:2em;
+}
+
+#you {
+  background: url(./images/node-community-fg.png) 0px 0px / 533px auto, url(./images/node-community-bg.png) 0px 0px / 528px auto #7f8a9b;
+  min-height: 360px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  -webkit-animation: bgscroll 30s linear 0s infinite;
+  -moz-animation: bgscroll 60s linear 0s infinite;
+  -ms-animation: bgscroll 30s linear 0s infinite;
+  -o-animation: bgscroll 30s linear 0s infinite;
+  animation: bgscroll 30s linear 0s infinite;
+}
+
+#you .vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+div > .wrap { height: 360px; }
+
+#how > .wrap {
+  background: no-repeat url(./images/node-humans-lhs.png) bottom left / 207px auto, no-repeat url(./images/node-humans-rhs.png) bottom right / 253px auto;
+}
+
+#you h2 {
+  text-align: center;
+  color: #eee;
+  margin: 0;
+  padding: 0;
+}
+
+#you h3 {
+  margin-top: 0;
+  text-align: center;
+  color: #a9b6cc;
+}
