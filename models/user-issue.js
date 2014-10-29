@@ -41,6 +41,10 @@ var stateToNumber = {
   'on_question_5': enums++,
 }
 
+UserIssue.prototype.stepNumber = function() {
+  return stateToNumber[this.state] + 1
+}
+
 var numberToState = [
   'on_question_1',
   'on_question_2',
@@ -121,7 +125,7 @@ UserIssue.prototype.questionText = function() {
   return {
     on_question_1: 'Is this issue a duplicate of any other issue?',
     on_question_2: 'Is there a clear consensus on how to solve the issue?',
-    on_question_3: 'Has one of the following contributors stated that they would accept a pull request to address the issue?',
+    on_question_3: 'Has one of the core contributors stated that they would accept a pull request to address the issue?',
     on_question_4: 'Does the issue include enough steps to reproduce the issue?',
     on_question_5: 'Is this still an issue?',
   }[this.state]
@@ -182,6 +186,7 @@ UserIssue.getByPath = function(user, repoUser, repoName, number, ready) {
   db.query(query, params, onresults)
 
   function onresults(err, result) {
+    debug(err, result)
     if (err) {
       return ready(err)
     }

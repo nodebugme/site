@@ -98,6 +98,10 @@ function createHandlers(server, settings) {
         return reply(err)
       }
 
+      if (!current) {
+        return reply.redirect('/triage')
+      }
+
       reply.view('issue-detail.hbs', {
         userIssue: current
       })

@@ -1,5 +1,10 @@
-body {margin: 0; padding: 0; overflow: auto; font-family: Source Sans Pro; color: #333;}
+body {overflow: auto; font-family: Source Sans Pro; color: #333; }
 
+html, body { 
+  margin:0;
+  padding:0;
+  height:100%;
+}
 
 h1 {font-size: 3em; margin: 0px 0;}
 h2 {font-size: 2em;}
@@ -23,8 +28,6 @@ code {font-family: Source Code Pro; font-size: 12px; background: #fafafa; border
   background: url('./images/node-turtle.png');
   background-size: 527px 360px;
 }
-
-body {}
 
 .login-btn:visited,
 .login-btn {
@@ -52,12 +55,60 @@ body {}
   margin: 0pt auto;
 }
 
+#wrapper {
+  min-height: 100%;
+  position: relative;
+}
 #masthead {
   background: #22252a;
   margin: 0;
   color: #eee;
-  padding-top: 4em;
   font-family: Courier New, Courier, Monaco, monospace;
+  padding-top: 4em;
+}
+
+.container {
+  margin-bottom: 0.25em;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+  bottom: 0;
+  left: 0;
+  background: #22252a;
+  margin: 0;
+  color: #eee;
+  padding-top: 0.5em;
+  padding-bottom: 3em;
+}
+
+input[type=text] {
+  font-size: 1em;
+  font-family: Source Sans, sans-serif;
+  border-radius: 3px;
+  padding: 0.25em 0.5em;
+  border: 1px solid #c3c3c3;
+  width: 66%;
+}
+
+.masthead {
+  background: #22252a;
+  margin: 0;
+  color: #eee;
+  padding: 2em 0em;
+}
+
+footer > .wrap,
+.container > .wrap,
+.masthead > .wrap {
+  min-height: 0;
+  height: auto;
+}
+
+.container:last-of-type {
+  padding-bottom: 216px;
 }
 
 #masthead h2 {
@@ -216,4 +267,112 @@ div > .wrap { height: 360px; }
   margin-top: 0;
   text-align: center;
   color: #a9b6cc;
+}
+
+.button:visited,
+.button {
+  font-family: Source Sans, sans-serif;
+  font-size: 1.0em;
+  outline: none;
+  border-radius: 3px;
+  color: #737e26;
+  background: none;
+  border: 1px solid #737e26;
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  margin-right: 0.125em;
+  cursor: pointer;
+}
+
+.button:focus,
+.button:hover {
+  border-radius: 3px;
+  color: white;
+  background: #c3d44e;
+  border: 1px solid #c3d44e;
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+}
+
+.danger:visited,
+.danger {
+  border-color: #e84f42;
+  color: #e84f42;
+}
+
+.button.danger:focus,
+.button.danger:hover {
+  background: #e84f42;
+  border-color: #e84f42;
+  color: white;
+}
+
+.secondary:visited,
+.secondary {
+  border-color: #4a6ea5;
+  color: #4a6ea5;
+}
+
+.button.secondary:focus,
+.button.secondary:hover {
+  background: #4a6ea5;
+  border-color: #4a6ea5;
+  color: white;
+}
+
+.button.noborder { 
+  border: none;
+}
+
+.button.noborder:focus,
+.button.noborder:hover {
+  color: #e84f42;
+  background: none;
+  text-decoration: underline;
+}
+
+.button.primary {
+  font-size: 1.5em;
+  margin-top: 0.75em;
+  background: #c3d44e;
+  color: white;
+  border-color: #c3d44e;
+}
+
+.button.primary:hover {
+  background: none;
+  color: #c3d44e;
+}
+
+.nav {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.nav > form {
+  display: inline;
+}
+
+.nav + h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.25em;
+}
+
+footer p {
+  font-size: 1.0em;
+}
+
+label {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1.25em;
+}
+
+label > input[type=radio] {
+  position:relative;
+  top: -0.25em;
 }

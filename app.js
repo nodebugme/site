@@ -39,6 +39,14 @@ handlebars.registerHelper('markdown', function(text) {
   return marked(text)
 })
 
+handlebars.registerHelper('step', function(userIssue) {
+  if (!userIssue) {
+    return
+  }
+
+  return userIssue.stepNumber()
+})
+
 models = {
   plugin: models,
   options: settings.server.plugins.models
