@@ -68,5 +68,5 @@ CREATE INDEX "nbm_issue_triage_count" ON "nbm_issue" ("triage_count");
 CREATE INDEX "nbm_issue_repo_id" ON "nbm_issue" ("repo_id");
 CREATE INDEX "nbm_user_issue_user_id" ON "nbm_user_issue" ("user_id");
 CREATE INDEX "nbm_user_issue_issue_id" ON "nbm_user_issue" ("issue_id");
-INSERT INTO "nbm_repo" ("user", "repo") VALUES ('joyent', 'node');
+INSERT INTO "nbm_repo" ("user", "name") VALUES ('joyent', 'node');
 COMMIT;
