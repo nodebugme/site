@@ -93,7 +93,7 @@ yar = {
 server.pack.register([good, cookieAuth, bell, crumb, models], function() {
   server.auth.strategy('github', 'bell', {
     provider: 'github',
-    scope: ['user'],
+    scope: [],
     password: settings.SECRET_KEY,
     clientId: settings.githubClientID,
     clientSecret: settings.githubClientSecret,
