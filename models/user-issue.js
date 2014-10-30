@@ -103,7 +103,7 @@ function handleYesNoMaybe(field, payloadField) {
       'unknown': null,
       'yes': true,
       'no': false,
-    }[payloadField]
+    }[payload[payloadField]]
 
     if (this[field] === undefined) {
       this[field] = null
