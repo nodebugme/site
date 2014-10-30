@@ -30,8 +30,7 @@ function makeORM(baseClass, db, models, fields) {
     info = info || {}
     for(var i = 0, len = this._fields.length; i < len; ++i) {
       this[fromSnake(this._fields[i])] =
-        info[this._fields[i]] ||
-        info[fromSnake(this._fields[i])]
+        this._fields[i] in info ? info[this._fields[i]] : info[fromSnake(this._fields[i])]
     }
     baseClass.apply(this, arguments)
   }
