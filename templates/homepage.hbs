@@ -22,7 +22,7 @@
     {{/if}}
     <p>
       You can help. <a href="#help">Learn more</a> or
-      <a class="login-btn" href="/login">
+      <a class="login-btn" href="{{#if isLoggedIn}}/triage{{else}}/login{{/if}}">
         <i class="ion-social-github"></i> Sign in with GitHub
       </a>
       to clean Node up.

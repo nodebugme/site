@@ -34,14 +34,10 @@ function createHandlers(server, settings) {
   }
 
   function displayHomepage(req, reply) {
-    console.log(req.auth.credentials)
-    if (req.auth.credentials) {
-      return reply.redirect('/triage')
-    }
-
     req.models.Issue.getUntriagedIssues(function(err, num) {
       reply.view('homepage.hbs', {
-        openBugs: num || 0
+        openBugs: num || 0,
+        isLoggedIn: req.auth.credentials
       })
     })
   }
