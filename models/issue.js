@@ -54,6 +54,7 @@ Issue.sync = function(github, repo, ready) {
     }
 
     lastSeen = issues.length ? issues[0].updatedAt : new Date(0)
+    console.log('\nfetching ' + repo.user + '/' + repo.name + ' issues since ' + lastSeen)
     next()
   })
 
@@ -89,7 +90,9 @@ Issue.sync = function(github, repo, ready) {
       return ok
     })
 
+    process.stdout.write('\rgot ' + updateNeeded.length + ' issues... ')
     if (!github.hasNextPage(issues) || !shouldContinue) {
+      process.stdout.write('done.\n')
       next = updateissues
     }
 
@@ -122,11 +125,11 @@ Issue.sync = function(github, repo, ready) {
       for(var i = 0, len = updateNeeded.length; i < len; ++i) {
         idx = toUpdate.indexOf(updateNeeded[i].number)
         if (idx > -1) {
-          console.log('updating', updateNeeded[i].number)
+          process.stdout.write('\rupdating ' + updateNeeded[i].number)
           update(updateNeeded[i], onready)
           toUpdate.splice(idx, 1)
         } else {
-          console.log('creating', updateNeeded[i].number)
+          process.stdout.write('\rcreating ' + updateNeeded[i].number)
           model.create(updateNeeded[i], onready)
         }
       }
@@ -151,8 +154,13 @@ Issue.sync = function(github, repo, ready) {
         return
       }
 
-      !--pending && ready()
+      !--pending && done()
     }
+  }
+
+  function done() {
+    console.log('')
+    ready()
   }
 }
 

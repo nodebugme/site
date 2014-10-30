@@ -92,6 +92,6 @@ server.pack.register([good, cookieAuth, bell, crumb, models], function() {
   })
 
   applyRoutes(server, settings.routes)
+  console.log('starting server on http://localhost:' + settings.port)
   server.start()
 })
-
