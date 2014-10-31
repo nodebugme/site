@@ -34,9 +34,9 @@ User.fromCredentials = function(creds, ready) {
 
     return model.create({
       username: creds.profile.username,
-      displayName: creds.profile.displayName,
-      email: creds.profile.email,
-      avatar: creds.profile.raw.avatar_url,
+      displayName: creds.profile.displayName || 'unknown',
+      email: creds.profile.email || 'unknown',
+      avatar: creds.profile.raw.avatar_url || 'unknown',
       token: creds.token
     }, ready)
   })
