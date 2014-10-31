@@ -1,3 +1,5 @@
+try { require('newrelic') } catch(err) { }
+
 var cookieAuth = require('hapi-auth-cookie')
 var marked = require('marked')
 var crumb = require('crumb')
