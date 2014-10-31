@@ -2,9 +2,9 @@ BEGIN;
 CREATE TABLE IF NOT EXISTS "nbm_user" ( 
   "id" serial primary key,
   "username" varchar(255) NOT NULL CHECK ("username" <> ''),
-  "display_name" varchar(255) NOT NULL,
-  "avatar" varchar(512) NOT NULL,
-  "email" varchar(255) NOT NULL,
+  "display_name" varchar(255) DEFAULT NULL,
+  "avatar" varchar(512) DEFAULT NULL,
+  "email" varchar(255) DEFAULT NULL,
   "token" varchar(40) NOT NULL,
   "created_at" timestamp DEFAULT now()
 );
