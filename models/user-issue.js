@@ -61,6 +61,12 @@ UserIssue.prototype.provideAnswer = function(payload, ready) {
     return ready(null, result)
   }
 
+  this.updatedAt = new Date()
+
+  if (this.state === 'complete') {
+    this.finishedAt = this.updatedAt
+  }
+
   this.update(ready)
 }
 
