@@ -115,10 +115,17 @@
   <div class="wrap">
     <h2>Your responses will help clean up the bug tracker!</h2>
     <p>
-      Your responses will be provided to a state of the art, synergistic, 10X
+      Your responses will be provided to a state of the art, &lt;sarcasm&gt;<em>synergistic, 10X</em>&lt;/sarcasm&gt;
       triage-application machine. The machine will assemble multiple triage
       evaluation reports into a single evaluation, and take decisive, unerring
       action on the bug.
+    </p>
+    <p>
+      <small>In reality, a node contributor will be looking at the responses and using
+      them to guide action on the tracker. Soon, though, there will be an anonymized feed
+      of answers &mdash; or even sooner if <a target="_blank" href="https://github.com/nodebugme/site">you&#39;d like
+      to take a stab at adding it</a>!
+      </small>
     </p>
 
     <p>
@@ -127,7 +134,13 @@
     </p>
   </div>
 </div>
-
+<div>
+  <div class="wrap" style="text-align: center">
+    <a class="button primary" href="{{#if isLoggedIn}}/triage{{else}}/login{{/if}}">
+      <i class="ion-social-github"></i> Sign in with GitHub
+    </a><span style="font-size:1.2em"> to start pitching in!</span>
+  </div>
+</div>
 <footer>
   <div class="wrap">
     <p>This site is <a href="https://github.com/nodebugme/site">available on github</a>. All code is MIT licensed.
