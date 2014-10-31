@@ -48,8 +48,8 @@ function format(op, params, value) {
     case 'notInTable': {
       // HURK: this is awful never do this
       params.push(value)
-      return ' NOT IN (SELECT "id" FROM "nbm_user_issue" WHERE' +
-        '"nbm_user_issue"."id" = $' + params.length + ')'
+      return ' NOT IN (SELECT "issue_id" FROM "nbm_user_issue" WHERE' +
+        '"nbm_user_issue"."user_id" = $' + params.length + ')'
     }
     case 'isNot': {
       params.push(value)

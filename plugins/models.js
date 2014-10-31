@@ -54,6 +54,8 @@ function register(plugin, options, next) {
     var isError = request.response instanceof Error ||
       request.response.isBoom
 
+    if (isError) console.log(request.response)
+
     dbinfo.client.query(isError ? 'ROLLBACK' : 'COMMIT', function(err) {
       dbinfo.release(request.response.isBoom)
       next(err)
