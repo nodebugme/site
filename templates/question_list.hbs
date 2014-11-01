@@ -1,14 +1,16 @@
 <div class="question">
-  <label class="question">
+  <label class="question input-row">
     <input type="radio" name="yesno" value="no">
     No, this issue is not a duplicate
   </label>
-  <label>
-    <input id="yes_value" type="radio" name="yesno" value="yes">
-    Yes, this issue duplicates
+  <div class="input-row">
+    <label>
+      <input id="yes_value" type="radio" name="yesno" value="yes">
+      Yes, this issue duplicates
+    </label>
     <input type="text" onfocusin="void(yes_value.checked=true);" name="issues" placeholder="#issueNumber, #issueNumber" />
-  </label>
-  <label class="question on_question_1">
+  </div>
+  <label class="question input-row on_question_1">
     <input type="radio" name="yesno" value="unknown" checked>
     I can&#39;t tell.
   </label>
