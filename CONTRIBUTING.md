@@ -48,7 +48,7 @@ of what you'd like to do. Use the following template for the body of the issue:
 
 # Proposed Solution
 
-## {1 sentene summary of the proposed solution}
+## {1 sentence summary of the proposed solution}
 
 {Description of your proposed solution}
 
