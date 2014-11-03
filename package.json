@@ -20,13 +20,15 @@
     "newrelic": "^1.12.2",
     "oauth": "^0.9.12",
     "pg.js": "^3.5.0",
+    "querybox": "^0.2.0",
     "weakmap": "0.0.6",
     "yar": "^2.4.0"
   },
   "devDependencies": {
     "ghauth": "^0.3.1",
     "open": "0.0.5",
-    "read": "^1.0.5"
+    "read": "^1.0.5",
+    "tape": "^3.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -19,16 +19,14 @@
       }
     },
     "plugins": {
-      "models": {
-        "database": {
-          "poolSize": 4,
-          "user": null,
-          "database": "nodebugme",
-          "password": null,
-          "port": 5432,
-          "host": "localhost",
-          "ssl": false
-        }
+      "database": {
+        "poolSize": 4,
+        "user": null,
+        "database": "nodebugme",
+        "password": null,
+        "port": 5432,
+        "host": "localhost",
+        "ssl": false
       }
     }
   }

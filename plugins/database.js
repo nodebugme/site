@@ -1,17 +1,15 @@
 module.exports = {register: register}
 register.attributes = {
-  name: 'models',
+  name: 'database',
   version: '1.0.0'
 }
 
 var debug = require('debug')('response')
+var debugDB = require('debug')('database')
 var pg = require('pg.js')
 var WeakMap = typeof WeakMap !== 'undefined' ? WeakMap : require('weakmap')
 
-var getRepo = require('../models/repo.js')
-var getUser = require('../models/user.js')
-var getIssue = require('../models/issue.js')
-var getUserIssue = require('../models/user-issue.js')
+var getQueryBox = require('../lib/sql.js')
 
 function register(plugin, options, next) {
   var cache = new WeakMap
@@ -22,18 +20,14 @@ function register(plugin, options, next) {
   next()
 
   function onrequest(request, next) {
-    pg.connect(options.database, function(err, client, done) {
+    pg.connect(options, function(err, client, done) {
       if (err) {
         return next(err)
       }
 
-      var models = {}
-      models.User = getUser(client, models)
-      models.Issue = getIssue(client, models)
-      models.UserIssue = getUserIssue(client, models)
-      models.Repo = getRepo(client, models)
       cache.set(request, {release: done, client: client})
-      request.models = models
+      request.db = client
+      request.querybox = getQueryBox(executeQuery.bind(client))
       client.query('BEGIN', function(err) {
         if (err) {
           return next(err)
@@ -61,4 +55,9 @@ function register(plugin, options, next) {
       next(err)
     })
   }
+}
+
+function executeQuery(qobj, ready) {
+  debugDB(qobj.name, qobj.values)
+  return this.query(qobj.text, qobj.values, ready)
 }

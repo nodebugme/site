@@ -1,122 +1,88 @@
-try { require('newrelic') } catch(err) { }
+try {
+  require('newrelic')
+} catch(err) {
+}
 
 var cookieAuth = require('hapi-auth-cookie')
-var marked = require('marked')
 var crumb = require('crumb')
 var hapi = require('hapi')
 var good = require('good')
 var bell = require('bell')
-var yar = require('yar')
 var joi = require('joi')
 
 var handlebars = require('handlebars')
-var getSettings = require('./settings.js')
-var applyRoutes = require('./routes.js')
+var getSettings = require('./lib/settings.js')
+var applyRoutes = require('./lib/routes.js')
 
-var settings
-var server
+if (module === require.main) {
+  getServer(function(err, server) {
+    if (err) throw err
+    server.start(function(err) {
+      console.log('server listening on ' + server.info.uri)
+    })
+  })
+}
 
-settings = getSettings(process.env.MODE)
-server = hapi.createServer('localhost', settings.port, settings.server)
+module.exports = getServer
 
-good = {
-  plugin: good,
-  options: {
-    reporters: [
-      {reporter: good.GoodConsole}
-    ]
+function getServer(ready) {
+  var settings
+  var server
+
+  settings = getSettings(process.env.MODE)
+  server = hapi.createServer('localhost', settings.port, settings.server)
+
+  require('./lib/hbs-helpers/user-issue.js')(handlebars, settings)
+  require('./lib/hbs-helpers/analytics.js')(handlebars, settings)
+  require('./lib/hbs-helpers/markdown.js')(handlebars, settings)
+  require('./lib/hbs-helpers/media.js')(handlebars, settings)
+  require('./lib/hbs-helpers/date.js')(handlebars, settings)
+
+  var database = require('./plugins/database.js')
+
+  var goodPlugin = {
+    plugin: good,
+    options: {
+      reporters: [
+        {reporter: good.GoodConsole}
+      ]
+    }
   }
-}
 
-var context = require('./plugins/context.js')
-var models = require('./plugins/models.js')
-
-marked.setOptions({
-  sanitize: true,
-  smartypants: true,
-  breaks: true, 
-})
-
-handlebars.registerHelper('markdown', function(text) {
-  return marked(text)
-})
-
-handlebars.registerHelper('step', function(userIssue) {
-  if (!userIssue) {
-    return
+  var databasePlugin = {
+    plugin: database,
+    options: settings.server.plugins.database
   }
 
-  return userIssue.stepNumber()
-})
+  server.pack.register([goodPlugin, cookieAuth, bell, crumb, databasePlugin], function(err) {
+    if (err) {
+      return ready(err)
+    }
 
-handlebars.registerHelper('humanDate', function(date) {
-  return date.getUTCFullYear() + ' ' + [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ][date.getUTCMonth()] + ' ' + date.getDate() + ([
-    'th',
-    'st',
-    'nd',
-    'rd',
-    'th'
-  ][date.getDate() % 9] || 'th')
-})
-
-models = {
-  plugin: models,
-  options: settings.server.plugins.models
-}
-
-context = {
-  plugin: context,
-  options: settings.server.plugins.context 
-}
-
-yar = {
-  plugin: yar,
-  options: {
-    cookieOptions: {
+    server.auth.strategy('github', 'bell', {
+      provider: 'github',
+      scope: [],
       password: settings.SECRET_KEY,
-      isSecure: false
-    }
-  }
+      clientId: settings.githubClientID,
+      clientSecret: settings.githubClientSecret,
+      isSecure: settings.githubIsSecure || false
+    })
+
+    server.auth.strategy('session', 'cookie', {
+      password: settings.SECRET_KEY,
+      redirectTo: '/',
+      isSecure: process.env.MODE === 'production'
+    })
+
+    server.views({
+      path: __dirname + '/templates',
+      engines: {
+        hbs: handlebars
+      }
+    })
+
+    applyRoutes(server, settings.routes)
+    ready(null, server)
+  })
 }
 
-server.pack.register([good, cookieAuth, bell, crumb, models], function() {
-  server.auth.strategy('github', 'bell', {
-    provider: 'github',
-    scope: [],
-    password: settings.SECRET_KEY,
-    clientId: settings.githubClientID,
-    clientSecret: settings.githubClientSecret,
-    isSecure: settings.githubIsSecure || false
-  })
-
-  server.auth.strategy('session', 'cookie', {
-    password: settings.SECRET_KEY,
-    redirectTo: '/',
-    isSecure: process.env.MODE === 'production'
-  })
-
-  server.views({
-    path: __dirname + '/templates',
-    helpersPath: __dirname + '/helpers',
-    engines: {
-      hbs: handlebars
-    }
-  })
-
-  applyRoutes(server, settings.routes)
-  console.log('starting server on http://localhost:' + settings.port)
-  server.start()
-})

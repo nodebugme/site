@@ -41,7 +41,7 @@ if (!fs.existsSync(configPath)) {
           return process.exit(1)
         }
 
-        client.query(fs.readFileSync(path.join(__dirname, 'init.sql'), 'utf8'), function(err) {
+        client.query(fs.readFileSync(path.join(__dirname, 'migrations', '0000-init.sql'), 'utf8'), function(err) {
           if (err) {
             console.log('failed! (%s)', err.message)
             return process.exit(1)
@@ -117,5 +117,10 @@ if (!fs.existsSync(configPath)) {
 }
 
 function done() {
-  require('./app.js')
+  require('./app.js')(function(err, server) {
+    if (err) throw err
+    server.start(function(err) {
+      console.log('server listening on ' + server.info.uri)
+    })
+  })
 }

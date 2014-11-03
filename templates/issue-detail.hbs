@@ -60,14 +60,14 @@
       </div>
 
       <h2>
-        {{userIssue.questionText}}
+        {{getQuestionText userIssue}}
       </h2>
 
       <form method="POST" action="/triage/{{ userIssue.issue.repo.user }}/{{ userIssue.issue.repo.name }}/{{ userIssue.issue.number }}">
         <input type="hidden" name="crumb" value="{{crumb}}"/>
 
 
-        {{{userIssue.questionForm}}}
+        {{{getQuestionForm userIssue}}}
 
         <button class="button primary">Submit</button>
       </form>
