@@ -2,6 +2,7 @@ SELECT
   -- userissue fields
   "t0"."id" AS "id",
   "t0"."state" AS "state",
+  "t0"."in_correct_repository" AS "inCorrectRepository",
   "t0"."duplicates" AS "duplicates",
   "t0"."is_feature_request" AS "isFeatureRequest",
   "t0"."has_consensus" AS "hasConsensus",
