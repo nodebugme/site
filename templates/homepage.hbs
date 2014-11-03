@@ -1,27 +1,4 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Node bug me</title>
-  <link rel="stylesheet" href="{{staticMediaURL}}style.css?b=1" />
-  <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro" rel="stylesheet" type="text/css" />
-  <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{staticMediaURL}}images/favicon-152.png">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{staticMediaURL}}images/favicon-144.png">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{staticMediaURL}}images/favicon-120.png">
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{staticMediaURL}}images/favicon-120.png">
-  <link rel="icon" href="{{staticMediaURL}}images/favicon.png" sizes="32x32">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@nodebugme">
-  <meta name="twitter:creator" content="@isntitvacant">
-  <meta name="twitter:title" content="Help triage Node.JS's issues!">
-  <meta name="twitter:description" content="Node.JS has a lot of issues! You can help figure out which ones are real.">
-  <meta name="twitter:image:src" content="{{staticMediaURL}}images/node-turtle.png">
-
-</head>
-<body>
-<div id="wrapper">
-
+{{>header name="homepage" includeIcons=true}}
 <div id="masthead">
   <div class="wrap">
     <h1>
@@ -141,27 +118,4 @@
     </a><span style="font-size:1.2em"> to start pitching in!</span>
   </div>
 </div>
-<footer>
-  <div class="wrap">
-    <p>This site is <a href="https://github.com/nodebugme/site">available on github</a>. All code is MIT licensed.
-    All art is licensed <a href="https://creativecommons.org/licenses/by/3.0/us/legalcode">CC-BY 3.0</a>.
-    <p>Made with &hearts; by <a href="http://twitter.com/isntitvacant">chris dickinson</a>.</p>
-    <p>
-      If you have any questions at all &mdash; about what you&#39;re triaging,
-      how to help build the site, or just want to say hi, <a href="https://github.com/nodebugme/discussion">open an issue on the nodebugme discussion repo</a>!
-    </p>
-  </div>
-</footer>
-</div>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '{{analytics}}', 'auto');
-  ga('send', 'pageview');
-</script>
-<script type="text/javascript" src="{{staticMediaURL}}bundle.js" data-main="issue-detail"></script>
-</body>
-</html>
+{{>footer}}

@@ -1,20 +1,25 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{#if title }}{{ title }} | {{/if}}Node bug me</title>
-  <link rel="stylesheet" href="{{staticMediaURL}}style.css" />
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+<meta charset="UTF-8">
+<title>{{#if current}}{{ title }} | {{/if}}Node bug me</title>
+<link rel="stylesheet" href="{{staticMediaURL}}style.css?b=1" />
+<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro' rel='stylesheet' type='text/css'>
+{{#if includeIcons}}
+<link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+{{/if}}
+
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{staticMediaURL}}images/favicon-152.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{staticMediaURL}}images/favicon-144.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{staticMediaURL}}images/favicon-120.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{staticMediaURL}}images/favicon-120.png">
+<link rel="icon" href="{{staticMediaURL}}images/favicon.png" sizes="32x32">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nodebugme">
+<meta name="twitter:creator" content="@isntitvacant">
+<meta name="twitter:title" content="Help triage Node.JS's issues!">
+<meta name="twitter:description" content="Node.JS has a lot of issues! You can help figure out which ones are real.">
+<meta name="twitter:image:src" content="{{staticMediaURL}}images/node-turtle.png">
 </head>
-<body>
-<header>
-  <div class="wrap">
-    <h4>Nodebug.me</h4>
-  {{#if user}}
-  {{else}}
-    <a class="btn btn-block btn-social btn-github" href="/login">
-      <i class="fa fa-github">&nbsp;</i> Sign in with GitHub
-    </a>
-  {{/if}}
-  </div>
-</header>
+<body id="{{name}}">
+<div id="wrapper">

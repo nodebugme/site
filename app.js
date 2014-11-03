@@ -35,6 +35,7 @@ function getServer(ready) {
   require('./lib/hbs-helpers/user-issue.js')(handlebars, settings)
   require('./lib/hbs-helpers/analytics.js')(handlebars, settings)
   require('./lib/hbs-helpers/markdown.js')(handlebars, settings)
+  require('./lib/hbs-helpers/partials.js')(handlebars, settings)
   require('./lib/hbs-helpers/media.js')(handlebars, settings)
   require('./lib/hbs-helpers/date.js')(handlebars, settings)
 
