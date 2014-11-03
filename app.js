@@ -38,7 +38,7 @@ function getServer(ready) {
   require('./lib/hbs-helpers/media.js')(handlebars, settings)
   require('./lib/hbs-helpers/date.js')(handlebars, settings)
 
-  var database = require('./plugins/database.js')
+  var database = require('./lib/plugins/database.js')
 
   var goodPlugin = {
     plugin: good,
