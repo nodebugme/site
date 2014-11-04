@@ -92,7 +92,9 @@ FROM "nbm_issue" "t1"
 FROM "nbm_user_issue" "t0" 
   WHERE "t0"."state" = 'complete'
   GROUP BY "t0"."issue_id"
-  OFFSET $1 LIMIT 10
 ) "stats" ON ("t1"."id" = "stats"."id")
   LEFT JOIN "nbm_repo" t2 ON (t1."repo_id" = t2."id")
+WHERE
+  "t1"."state" = 'open'
 ORDER BY "t1"."number" DESC
+OFFSET $1 LIMIT 10
