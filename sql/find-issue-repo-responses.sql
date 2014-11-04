@@ -13,7 +13,7 @@ SELECT
 
   -- stats
   "stats"."total" AS "stats.total",
-  array_remove("stats"."duplicates", NULL) AS "stats.duplicates",
+  "stats"."duplicates" AS "stats.duplicates",
   "stats"."in_correct_repository_yes" AS "stats.inCorrectRepository.yes",
   "stats"."in_correct_repository_no" AS "stats.inCorrectRepository.no",
   ("stats"."total" - "stats"."in_correct_repository_no" - "stats"."in_correct_repository_yes") AS "stats.inCorrectRepository.idk",
