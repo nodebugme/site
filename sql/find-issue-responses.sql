@@ -19,7 +19,7 @@ SELECT
   ("stats"."total" - "stats"."in_correct_repository_no" - "stats"."in_correct_repository_yes") AS "stats.inCorrectRepository.idk",
   "stats"."has_consensus_yes" AS "stats.hasConsensus.yes",
   "stats"."has_consensus_no" AS "stats.hasConsensus.no",
-  ("stats"."total" - "stats"."has_reproduction_steps_no" - "stats"."has_consensus_yes") AS "stats.hasConsensus.idk",
+  ("stats"."total" - "stats"."has_consensus_no" - "stats"."has_consensus_yes") AS "stats.hasConsensus.idk",
   "stats"."is_feature_request_yes" AS "stats.isFeatureRequest.yes",
   "stats"."is_feature_request_no" AS "stats.isFeatureRequest.no",
   ("stats"."total" - "stats"."is_feature_request_no" - "stats"."is_feature_request_yes") AS "stats.isFeatureRequest.idk",
