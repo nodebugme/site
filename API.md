@@ -1,26 +1,20 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+# REST API
 
-- [REST API](#rest-api)
-  - [Objects](#objects)
-    - [`ListContainer`](#listcontainer)
+- [Objects](#objects)
+  - [`ListContainer`](#listcontainer)
     - [`UserResponse`](#userresponse)
     - [`Issue`](#issue)
-    - [`Repo`](#repo)
-    - [`ResponseStatistics`](#responsestatistics)
-  - [Endpoints](#endpoints)
-    - [Issue-centric Endpoints](#issue-centric-endpoints)
-      - [`GET /api/v1/issues`](#get-apiv1issues)
-      - [`GET /api/v1/issues/{repoUser}/{repoName}`](#get-apiv1issuesrepouserreponame)
-      - [`GET /api/v1/issues/{repoUser}/{repoName}/{issueNumber}`](#get-apiv1issuesrepouserreponameissuenumber)
-    - [UserResponse-centric Endpoints](#userresponse-centric-endpoints)
-      - [`GET /api/v1/responses/all`](#get-apiv1responsesall)
-      - [`GET /api/v1/responses/complete`](#get-apiv1responsescomplete)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# REST API
+      - [`Repo`](#repo)
+      - [`ResponseStatistics`](#responsestatistics)
+        - [`YesNoMaybeTally`](#yesnomaybetally)
+- [Endpoints](#endpoints)
+  - [Issue-centric Endpoints](#issue-centric-endpoints)
+    - [`GET /api/v1/issues`](#get-apiv1issues)
+    - [`GET /api/v1/issues/{repoUser}/{repoName}`](#get-apiv1issuesrepouserreponame)
+    - [`GET /api/v1/issues/{repoUser}/{repoName}/{issueNumber}`](#get-apiv1issuesrepouserreponameissuenumber)
+  - [UserResponse-centric Endpoints](#userresponse-centric-endpoints)
+    - [`GET /api/v1/responses/all`](#get-apiv1responsesall)
+    - [`GET /api/v1/responses/complete`](#get-apiv1responsescomplete)
 
 ## Objects
 
@@ -39,7 +33,9 @@ The following subsections detail the common types of objects that the API will r
 }
 ```
 
-### `UserResponse`
+--------------
+
+#### `UserResponse`
 
 ```
 {
@@ -65,7 +61,7 @@ The following subsections detail the common types of objects that the API will r
 }
 ```
 
-### `Issue`
+#### `Issue`
 
 ```
 { 
@@ -134,7 +130,9 @@ response statistics on that issue.
 }
 ```
 
-### `Repo`
+--------------
+
+##### `Repo`
 
 ```
 { 
@@ -155,7 +153,84 @@ linked to nodebug.me.
 }
 ```
 
-### `ResponseStatistics`
+--------------
+
+##### `ResponseStatistics`
+
+```
+{
+  "total": Number,
+  "duplicates": [String | null],
+  "inCorrectRepository": <YesNoMaybeTally Object>,
+  "hasConsensus": <YesNoMaybeTally Object>,
+  "isFeatureRequest": <YesNoMaybeTally Object>,
+  "hasReproductionSteps": <YesNoMaybeTally Object>,
+  "isIssueOnNode10": <YesNoMaybeTally Object>,
+  "isIssueOnNode11": <YesNoMaybeTally Object>,
+}
+```
+
+A object representing collected statistics for a given Github issue. `total`
+indicates the total number of responses collected for the issue. The sum of
+numbers in each subordinate [`YesNoMaybeTally`](#yesnomaybetally) object will
+equal `total`. Found as part of a [`Issue`](#issue) object.
+
+**Example Object**:
+
+```json
+{
+  "total": "1",
+  "duplicates": [
+    "#12"
+  ],
+  "inCorrectRepository": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  },
+  "hasConsensus": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  },
+  "isFeatureRequest": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  },
+  "hasReproductionSteps": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  },
+  "isIssueOnNode10": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  },
+  "isIssueOnNode11": {
+    "yes": "0",
+    "no": "0",
+    "idk": "1"
+  }
+}
+```
+
+###### `YesNoMaybeTally`
+
+```
+{
+  "yes": Number,
+  "no": Number,
+  "idk": Number
+}
+```
+
+An object representing a tally of the number of "Yes", "No", or "I Don't Know"
+responses to a given question of a given issue. Found as part of a
+[`ResponseStatistics`](#responsestatistics) object.
+
+---------------
 
 ## Endpoints
 
