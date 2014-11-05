@@ -61,6 +61,8 @@ The following subsections detail the common types of objects that the API will r
 }
 ```
 
+--------------
+
 #### `Issue`
 
 ```
@@ -216,6 +218,8 @@ equal `total`. Found as part of a [`Issue`](#issue) object.
 }
 ```
 
+--------------
+
 ###### `YesNoMaybeTally`
 
 ```
@@ -247,6 +251,8 @@ Returns a [`ListContainer`](#listcontainer) object, containing
 
 Return a list of **open** issues with statistics for all repositories.
 
+--------------
+
 #### `GET /api/v1/issues/{repoUser}/{repoName}`
 
 **Contents:**
@@ -257,6 +263,8 @@ Returns a [`ListContainer`](#listcontainer) object, containing
 **Summary:**
 
 Return a list of **open** issues with statistics for given repository.
+
+--------------
 
 #### `GET /api/v1/issues/{repoUser}/{repoName}/{issueNumber}`
 
@@ -269,6 +277,8 @@ Returns a single [`Issue`](#issue) object.
 This endpoint returns a single `Issue` object -- it's useful if you're
 building an extension to display triage info on a github issue page. Unlike
 the other issue endpoints
+
+--------------
 
 ### UserResponse-centric Endpoints
 
@@ -285,6 +295,8 @@ This endpoint returns a list of responses in various states --
 these may be in-progress, complete, or skipped. It's mostly useful
 to get an idea of the site's activity at a given moment.
 
+--------------
+
 #### `GET /api/v1/responses/complete`
 
 **Contents:**
@@ -296,3 +308,6 @@ Returns a [`ListContainer`](#listcontainer) object, containing
 
 This endpoint only returns complete responses, suitable for taking
 action on.
+
+--------------
+
