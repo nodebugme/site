@@ -1,5 +1,7 @@
 # REST API
 
+<img src="https://cloud.githubusercontent.com/assets/37303/4924181/09996b6c-6521-11e4-86f2-0d7aca8f626b.png" alt="api image" width="500" height="332">
+
 - [Objects](#objects)
   - [`ListContainer`](#listcontainer)
     - [`UserResponse`](#userresponse)
