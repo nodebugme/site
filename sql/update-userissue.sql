@@ -5,8 +5,6 @@ UPDATE "nbm_user_issue" SET
   "is_feature_request" = $5,
   "has_consensus" = $6,
   "has_reproduction_steps" = $7,
-  "is_fixed_on_node_10" = $8,
-  "is_fixed_on_node_11" = $9,
-  "updated_at" = $10,
-  "finished_at" = $11
+  "updated_at" = $8,
+  "finished_at" = $9
 WHERE "id" = $1

@@ -117,7 +117,7 @@ if (!fs.existsSync(configPath)) {
 }
 
 function done() {
-  require('./app.js')(function(err, server) {
+  require('./app.js')(null, function(err, server) {
     if (err) throw err
     server.start(function(err) {
       console.log('server listening on ' + server.info.uri)

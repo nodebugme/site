@@ -7,8 +7,6 @@ SELECT
   "t0"."is_feature_request" AS "isFeatureRequest",
   "t0"."has_consensus" AS "hasConsensus",
   "t0"."has_reproduction_steps" AS "hasReproductionSteps",
-  "t0"."is_fixed_on_node_10" AS "isFixedOnNode10",
-  "t0"."is_fixed_on_node_11" AS "isFixedOnNode11",
   "t0"."started_at" AS "startedAt",
   "t0"."updated_at" AS "updatedAt",
   "t0"."finished_at" AS "finishedAt",
@@ -29,7 +27,8 @@ SELECT
 
   -- repo fields
   "t2"."user" AS "issue.repo.user",
-  "t2"."name" AS "issue.repo.name"
+  "t2"."name" AS "issue.repo.name",
+  "t2"."versions"::text[] AS "issue.repo.versions"
 FROM "nbm_user_issue" t0
   LEFT JOIN "nbm_issue" t1 ON (t0."issue_id" = t1."id")
   LEFT JOIN "nbm_repo" t2 ON (t1."repo_id" = t2."id")

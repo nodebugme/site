@@ -15,7 +15,7 @@ var getSettings = require('./lib/settings.js')
 var applyRoutes = require('./lib/routes.js')
 
 if (module === require.main) {
-  getServer(function(err, server) {
+  getServer(null, function(err, server) {
     if (err) throw err
     server.start(function(err) {
       console.log('server listening on ' + server.info.uri)
@@ -25,11 +25,10 @@ if (module === require.main) {
 
 module.exports = getServer
 
-function getServer(ready) {
-  var settings
+function getServer(settings, ready) {
   var server
 
-  settings = getSettings(process.env.MODE)
+  settings = settings || getSettings(process.env.MODE)
   server = hapi.createServer('localhost', settings.port, settings.server)
 
   require('./lib/hbs-helpers/user-issue.js')(handlebars, settings)
@@ -50,12 +49,42 @@ function getServer(ready) {
     }
   }
 
+  var cookieAuthPlugin = {
+    plugin: cookieAuth,
+    options: {}
+  }
+
   var databasePlugin = {
     plugin: database,
     options: settings.server.plugins.database
   }
 
-  server.pack.register([goodPlugin, cookieAuth, bell, crumb, databasePlugin], function(err) {
+  var bellPlugin = {
+    plugin: bell,
+    options: {}
+  }
+
+  var crumbPlugin = {
+    plugin: crumb,
+    options: {}
+  }
+
+  var plugins = [
+    goodPlugin,
+    cookieAuthPlugin,
+    bellPlugin,
+    crumbPlugin,
+    databasePlugin
+  ]
+
+  plugins = plugins.filter(function(xs) {
+    var name =
+      xs.plugin.register.attributes.name ||
+      xs.plugin.register.attributes.pkg.name
+    return !(name in (settings.disablePlugins || {}))
+  })
+
+  server.pack.register(plugins, function(err) {
     if (err) {
       return ready(err)
     }
