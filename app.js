@@ -30,7 +30,7 @@ function getServer(ready) {
   var server
 
   settings = getSettings(process.env.MODE)
-  server = hapi.createServer('localhost', settings.port, settings.server)
+  server = hapi.createServer('0.0.0.0', settings.port, settings.server)
 
   require('./lib/hbs-helpers/user-issue.js')(handlebars, settings)
   require('./lib/hbs-helpers/analytics.js')(handlebars, settings)
