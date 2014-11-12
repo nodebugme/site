@@ -10,7 +10,8 @@ INSERT INTO "nbm_issue" (
   "user",
   "assignee",
   "locked",
-  "labels"
+  "labels",
+  "is_pull_request"
 ) VALUES (
   $1,
   $2,
@@ -23,5 +24,6 @@ INSERT INTO "nbm_issue" (
   $9,
   $10,
   $11,
-  $12
+  $12,
+  $13
 ) RETURNING "id"

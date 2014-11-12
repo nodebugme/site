@@ -24,6 +24,7 @@ FROM "nbm_issue" "t0"
 LEFT JOIN "nbm_repo" "t1" ON ("t0"."repo_id" = "t1"."id")
 WHERE
   "t0"."state" = 'open' AND
+  "t0"."is_pull_request" = FALSE AND
   "t0"."id" NOT IN (
     SELECT "issue_id" FROM "nbm_user_issue" "t2"
     WHERE "t2"."user_id" = $1

@@ -1,21 +1,25 @@
+'use strict'
+
 var sync = require('./lib/sync-issues.js')
 var getQuerybox = require('./lib/sql.js')
 var Github = require('github')
+var once = require('once')
 var pg = require('pg.js')
 
 module.exports = syncAll
 
 if (module.id === '.') {
-  syncAll(function() {})
+  syncAll(process.argv[2] === '--all', function() {})
 }
 
-function syncAll(ready_) {
-  var config = require('./config.json')
-  var ready = function(err) {
-    var fn = ready_
-    ready_ = Function()
-    fn(err)
+function syncAll(all, ready) {
+  if (arguments.length === 1) {
+    ready = all
+    all = false
   }
+
+  var config = require('./config.json')
+  ready = once(ready)
 
   var github = new Github({
       version: '3.0.0'
@@ -44,7 +48,7 @@ function syncAll(ready_) {
       if (!pending) return end()
 
       results.rows.forEach(function(repo) {
-        sync(qbox, github, repo, function(err) {
+        sync(qbox, github, repo, all, function(err) {
           if (err) console.error(err.stack)
 
           !--pending && end()

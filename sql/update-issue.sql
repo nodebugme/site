@@ -8,5 +8,6 @@ UPDATE "nbm_issue" SET
   "user" = $9,
   "assignee" = $10,
   "locked" = $11,
-  "labels" = $12
+  "labels" = $12,
+  "is_pull_request" = $13
 WHERE "number" = $1 AND "repo_id" = $2
