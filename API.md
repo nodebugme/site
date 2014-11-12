@@ -156,35 +156,29 @@ response statistics on that issue.
       "total": "3",
       "duplicates": ["", "", ""],
       "inCorrectRepository": {
-            "yes": "0",
-            "no": "0",
-            "idk": "3"
-          },
+        "yes": "0",
+        "no": "0",
+        "idk": "3"
+      },
       "hasConsensus": {
-            "yes": "1",
-            "no": "2",
-            "idk": "1"
-          },
+        "yes": "1",
+        "no": "2",
+        "idk": "1"
+      },
       "isFeatureRequest": {
-            "yes": "3",
-            "no": "0",
-            "idk": "0"
-          },
+        "yes": "3",
+        "no": "0",
+        "idk": "0"
+      },
       "hasReproductionSteps": {
-            "yes": "2",
-            "no": "1",
-            "idk": "0"
-          },
-      "isIssueOnNode10": {
-            "yes": "1",
-            "no": "1",
-            "idk": "1"
-          },
-      "isIssueOnNode11": {
-            "yes": "1",
-            "no": "1",
-            "idk": "1"
-          }
+        "yes": "2",
+        "no": "1",
+        "idk": "0"
+      },
+      "isIssueOnVersions": {
+        "0.10": {"yes": 1, "no": 1, "idk": 1},
+        "0.11": {"yes": 1, "no": 1, "idk": 1}
+      }
     }
 }
 ```
