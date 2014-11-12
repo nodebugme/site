@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn
+var migrate = require('./lib/migrate.js')
 var sync = require('./sync-gh-issues.js')
 var ghauth = require('ghauth')
 var read = require('read')
@@ -35,13 +36,13 @@ if (!fs.existsSync(configPath)) {
       console.log('done.')
 
       process.stdout.write('setting up "nodebugme" tables... ')
-      pg.connect(json.server.plugins.models.database, function(err, client, done) {
+      pg.connect(json.server.plugins.database, function(err, client, done) {
         if (err) {
           console.log('failed! (%s)', err.message)
           return process.exit(1)
         }
 
-        client.query(fs.readFileSync(path.join(__dirname, 'migrations', '0000-init.sql'), 'utf8'), function(err) {
+        migrate(client, function(err) {
           if (err) {
             console.log('failed! (%s)', err.message)
             return process.exit(1)
