@@ -6,7 +6,6 @@
   - [`ListContainer`](#listcontainer)
     - [`UserResponse`](#userresponse)
     - [`Issue`](#issue)
-      - [`Repo`](#repo)
       - [`ResponseStatistics`](#responsestatistics)
         - [`YesNoMaybeTally`](#yesnomaybetally)
 - [Endpoints](#endpoints)
@@ -130,7 +129,7 @@ Complete, with `isIssueOnVersions`:
   "createdAt": <iso timestamp>
   "updatedAt": <iso timestamp> | null,
   "closedAt": <iso timestamp> | null,
-  "repo": <Repo Object>,
+  "issueURL": <string>,
   "stats": <ResponseStatistics Object>
 }
 ```
@@ -148,10 +147,7 @@ response statistics on that issue.
   "createdAt": "2084-11-01T18:58:20.000Z",
   "updatedAt": "2084-11-01T19:01:26.000Z",
   "closedAt": null,
-  "repo": {
-      "user": "joyent",
-      "name": "node"
-    },
+  "issueURL": "https://github.com/joyent/ndoe/10000000",
   "stats": {
       "total": "3",
       "duplicates": ["", "", ""],
@@ -180,29 +176,6 @@ response statistics on that issue.
         "0.11": {"yes": 1, "no": 1, "idk": 1}
       }
     }
-}
-```
-
---------------
-
-##### `Repo`
-
-```
-{ 
-  "user": "string",
-  "name": "string"
-}
-```
-
-A simple object representing a github repository
-linked to nodebug.me.
-
-**Example Object**:
-
-```json
-{
-  "user": "joyent",
-  "repo": "node"
 }
 ```
 
