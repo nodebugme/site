@@ -35,6 +35,10 @@ The following subsections detail the common types of objects that the API will r
 }
 ```
 
+A object representing a list of items. The `<Objects>` may be [issues](#issue) or 
+[responses](#userresponse), based on the endpoint used. If there's no next page, `meta.next`
+will be `null`. Similarly, if there's no previous page, `meta.prev` will be `null`.
+
 --------------
 
 #### `UserResponse`
@@ -54,12 +58,63 @@ The following subsections detail the common types of objects that the API will r
   "hasConsensus": true | false | null,
   "isFeatureRequest": true | false | null,
   "hasReproductionSteps": true | false | null,
-  "isIssueOnNode10": true | false | null,
-  "isIssueOnNode11": true | false | null,
+  "isIssueOnVersions": {<version>: <YesNoMaybeTally Object>} | {},
   "startedAt": <ISO timestamp>,
   "updatedAt": <ISO timestamp>,
   "finishedAt": <ISO timestamp> | null,
   "issueURL": "https://github.com/user/repo/number"
+}
+```
+
+An object representing a single response to a issue under triage. If incomplete, `isIssueOnVersions` 
+will be an empty object. 
+
+**Example Objects**:
+
+Incomplete, sans `isIssueOnVersions`:
+
+```json
+{
+  "state": "incomplete",
+  "inCorrectRepository": null,
+  "duplicates": null,
+  "isFeatureRequest": null,
+  "hasConsensus": null,
+  "hasReproductionSteps": null,
+  "startedAt": "2014-11-06T16:34:42.173Z",
+  "updatedAt": "2014-11-06T16:34:42.173Z",
+  "finishedAt": null,
+  "issueURL": "https://github.com/joyent/node/10000",
+  "isIssueOnVersions": {}
+}
+```
+
+Complete, with `isIssueOnVersions`:
+
+```json
+{
+  "state": "complete",
+  "inCorrectRepository": null,
+  "duplicates": null,
+  "isFeatureRequest": false,
+  "hasConsensus": true,
+  "hasReproductionSteps": true,
+  "startedAt": "2014-10-31T21:32:18.316Z",
+  "updatedAt": "2014-10-31T21:32:18.316Z",
+  "finishedAt": null,
+  "issueURL": "https://github.com/joyent/node/10000",
+  "isIssueOnVersions": {
+    "0.11": {
+      "yes": 1,
+      "no": 0,
+      "idk": 0
+    },
+    "0.10": {
+      "yes": 1,
+      "no": 0,
+      "idk": 0
+    }
+  }
 }
 ```
 
@@ -169,8 +224,9 @@ linked to nodebug.me.
   "hasConsensus": <YesNoMaybeTally Object>,
   "isFeatureRequest": <YesNoMaybeTally Object>,
   "hasReproductionSteps": <YesNoMaybeTally Object>,
-  "isIssueOnNode10": <YesNoMaybeTally Object>,
-  "isIssueOnNode11": <YesNoMaybeTally Object>,
+  "isIssueOnVersions": {
+    <version>: <YesNoMaybeTally Object>, ...
+  }
 }
 ```
 
@@ -178,6 +234,9 @@ A object representing collected statistics for a given Github issue. `total`
 indicates the total number of responses collected for the issue. The sum of
 numbers in each subordinate [`YesNoMaybeTally`](#yesnomaybetally) object will
 equal `total`. Found as part of a [`Issue`](#issue) object.
+
+The `<version>` key corresponds to the version of the given repository that
+exhibits the issue.
 
 **Example Object**:
 
@@ -207,15 +266,17 @@ equal `total`. Found as part of a [`Issue`](#issue) object.
     "no": "0",
     "idk": "1"
   },
-  "isIssueOnNode10": {
-    "yes": "0",
-    "no": "0",
-    "idk": "1"
-  },
-  "isIssueOnNode11": {
-    "yes": "0",
-    "no": "0",
-    "idk": "1"
+  "isIssueOnVersions": {
+    "0.10": {
+      "yes": "0",
+      "no": "0",
+      "idk": "1"
+    },
+    "0.11": {
+      "yes": "0",
+      "no": "0",
+      "idk": "1"
+    }
   }
 }
 ```
