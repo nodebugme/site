@@ -108,7 +108,7 @@ SELECT
     "t1"."user" ||
     '/' ||
     "t1"."name" ||
-    '/' ||
+    '/issues/' ||
     "t0"."number"
   ) AS "issueURL",
 

@@ -15,7 +15,7 @@ SELECT
     "t2"."user" ||
     '/' ||
     "t2"."name" ||
-    '/' ||
+    '/issues/' ||
     "t1"."number"
   ) AS "issueURL"
 FROM "nbm_user_issue" t0
